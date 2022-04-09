@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 485
     y: -111
     width: 880
-    height: 1205
+    height: 1262
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -479,7 +479,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614615}
   dataType: 0
-  capacity: 100000
+  capacity: 50000000
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -500,7 +500,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 941, y: 686}
+  m_UIPosition: {x: 941, y: 743}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 941, y: 817}
+  m_UIPosition: {x: 941, y: 874}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

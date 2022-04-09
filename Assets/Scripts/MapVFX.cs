@@ -27,29 +27,17 @@ public class MapVFX : MonoBehaviour {
     [SerializeField] private VisualEffect _vfx;
 
     void Start() {
-        _dataLoader.LoadFile();
+        _dataLoader.LoadFile(0);
         _dataLoader.ReadNextTile();
     }
 
     void Update() {
-        TileData tile = _dataLoader.ReadNextTile();
-        CreateCube(tile);
+        CreateCube(_dataLoader.ReadNextTile());
     }
 
     private void CreateCube(TileData tileData) {
 
-        Vector3 position = new Vector3Int(tileData.Location.x, _towerHeights[tileData.Location.x, tileData.Location.y], -tileData.Location.y);
-
-        position *= _mapScale;
-
-        _vfx.SetVector3("Position", position);
-
-
-
-        Vector4 colorVec = new Color(tileData.Color.r, tileData.Color.g, tileData.Color.b, 1);
-
-
-        //print(colorVec);
+        _vfx.SetVector3("Position", new Vector3(tileData.Location.x, _towerHeights[tileData.Location.x, tileData.Location.y], -tileData.Location.y) * _mapScale);
         _vfx.SetVector4("Color", RGBToHDR.ToHDR(tileData.Color));
 
         _towerHeights[tileData.Location.x, tileData.Location.y]++;

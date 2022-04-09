@@ -15,7 +15,8 @@ using UnityEngine;
 
 public class DataLoader {
 
-    private int _nextLineToRead = 1;
+    private int _currentFileIndex = 0;
+    private int _nextLineToRead = 0;
     private string[] _data;
 
 
@@ -55,12 +56,24 @@ public class DataLoader {
     };
     
 
-    public void LoadFile() {
-        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\cleanData.txt");
+    public void LoadFile(int fileIndex) {
+        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\placeData" + fileIndex.ToString() + ".txt");
     }
 
 
     public TileData ReadNextTile() {
+
+        // Reached the end of the file, read the next one.
+        // TODO This will error out on the last file.
+        if (_nextLineToRead % 1000 == 0) {
+            Debug.Log("Placed " + (_nextLineToRead + (_currentFileIndex  * 10000000))+ " tiles.");
+        }
+
+        if (_nextLineToRead >= 10000000) {
+            _nextLineToRead = 0;
+            _currentFileIndex++;
+            LoadFile(_currentFileIndex);
+        }
 
         string[] splitLine = _data[_nextLineToRead].Split("|");
 
