@@ -15,9 +15,9 @@ using UnityEngine;
 public struct TileData {
 
     public Vector2Int Location { get; set; }
-    public Color Color { get; set; }
+    public Color32 Color { get; set; }
 
-    public TileData(Vector2Int loc, Color col) {
+    public TileData(Vector2Int loc, Color32 col) {
         Location = loc;
         Color = col;
     }

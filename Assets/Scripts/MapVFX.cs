@@ -1,16 +1,30 @@
+/*
+MapVFX.cs 
+
+Original Author: Charlton Lane
+Created: 
+Unity Version: 2021.2.18f1
+Contributors: 
+
+Description: 
+*/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
-public class Map : MonoBehaviour {
+public class MapVFX : MonoBehaviour {
 
-    [SerializeField] private GameObject _cubePrefab;
 
-    private int[,] _towerHeights = new int[2000,2000];
+    private int[,] _towerHeights = new int[2000, 2000];
 
     private DataLoader _dataLoader = new DataLoader();
 
     [SerializeField] private float _mapScale = 1;
+
+    [SerializeField] private VisualEffect _vfx;
 
     void Start() {
         _dataLoader.LoadFile();
@@ -28,9 +42,19 @@ public class Map : MonoBehaviour {
 
         position *= _mapScale;
 
-        GameObject tile = Instantiate(_cubePrefab, position, Quaternion.identity, transform);
-        tile.GetComponent<MeshRenderer>().material.color = tileData.Color;
+        _vfx.SetVector3("Position", position);
+
+
+
+        Vector4 colorVec = new Color(tileData.Color.r, tileData.Color.g, tileData.Color.b, 1);
+
+
+        //print(colorVec);
+        _vfx.SetVector4("Color", RGBToHDR.ToHDR(tileData.Color));
 
         _towerHeights[tileData.Location.x, tileData.Location.y]++;
+
+        _vfx.SendEvent("SpawnParticle");
     }
 }
+

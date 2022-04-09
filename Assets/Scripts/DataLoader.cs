@@ -27,7 +27,7 @@ public class DataLoader {
 
         string[] splitLine = _data[_nextLineToRead].Split(",");
 
-        Color color = ToColor(int.Parse(splitLine[2].Substring(1), System.Globalization.NumberStyles.HexNumber));
+        Color32 color = ToColor(int.Parse(splitLine[2].Substring(1), System.Globalization.NumberStyles.HexNumber));
         //Debug.Log(color);
 
         
