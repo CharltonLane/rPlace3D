@@ -10,6 +10,7 @@ Description:
 */
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DataLoader {
@@ -18,29 +19,66 @@ public class DataLoader {
     private string[] _data;
 
 
+    private Dictionary<string, string> _palette = new Dictionary<string, string>() {
+        {"0", "FFFFFF"},
+        {"1", "FFF8B8"},
+        {"2", "FFD635"},
+        {"3", "FFB470"},
+        {"4", "FFA800"},
+        {"5", "FF99AA"},
+        {"6", "FF4500"},
+        {"7", "FF3881"},
+        {"8", "E4ABFF"},
+        {"9", "DE107F"},
+        {"10", "D4D7D9"},
+        {"11", "BE0039"},
+        {"12", "B44AC0"},
+        {"13", "9C6926"},
+        {"14", "94B3FF"},
+        {"15", "898D90"},
+        {"16", "811E9F"},
+        {"17", "7EED56"},
+        {"18", "6D482F"},
+        {"19", "6D001A"},
+        {"20", "6A5CFF"},
+        {"21", "51E9F4"},
+        {"22", "515252"},
+        {"23", "493AC1"},
+        {"24", "3690EA"},
+        {"25", "2450A4"},
+        {"26", "00CCC0"},
+        {"27", "00CC78"},
+        {"28", "00A368"},
+        {"29", "009EAA"},
+        {"30", "00756F"},
+        {"31", "000000"},
+    };
+    
+
     public void LoadFile() {
-        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\2022_place_canvas_history-000000000001.csv");
+        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\cleanData.txt");
     }
 
 
     public TileData ReadNextTile() {
 
-        string[] splitLine = _data[_nextLineToRead].Split(",");
+        string[] splitLine = _data[_nextLineToRead].Split("|");
 
-        Color32 color = ToColor(int.Parse(splitLine[2].Substring(1), System.Globalization.NumberStyles.HexNumber));
+        string colorID = splitLine[0];
+        string hexColor = _palette[colorID];
+
+        Color32 color = ToColor(int.Parse(hexColor, System.Globalization.NumberStyles.HexNumber));
         //Debug.Log(color);
 
-        
-        Vector2Int location = new Vector2Int(int.Parse(splitLine[3].Substring(1)), int.Parse(splitLine[4].Substring(0, splitLine[4].Length - 1)));
+        string[] positionValues = splitLine[1].Split(",");
+
+        Vector2Int location = new Vector2Int(int.Parse(positionValues[0]), int.Parse(positionValues[1]));
         //Debug.Log(location);
 
 
         _nextLineToRead++;
 
-        if (location.x < 1000 && location.y < 1000) {
-            return new TileData(location, color);
-        }
-        return ReadNextTile();
+        return new TileData(location, color);
         
         
     }

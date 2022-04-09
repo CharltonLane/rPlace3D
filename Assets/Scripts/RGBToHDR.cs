@@ -26,8 +26,11 @@ public class RGBToHDR {
         { new Color32(129, 30, 159, 255), new Color32(56, 3, 88, 255) }, // Dark Purple.
         { new Color32(126, 237, 86, 255), new Color32(39, 144, 19, 255) }, // Lime.
         { new Color32(0, 163, 104, 255), new Color32(0, 93, 35, 255) }, // Dark Green.
+        { new Color32(0, 158, 170, 255), new Color32(0, 87, 103, 255) }, // Blue/Green.
         { new Color32(255, 153, 170, 255), new Color32(255, 81, 103, 255) }, // Osu Pink.
+        { new Color32(106, 92, 255, 255), new Color32(37, 27, 255, 255) }, // Light Blue/Purple.
         { new Color32(180, 74, 192, 255), new Color32(116, 17, 134, 255) }, // Purple.
+        { new Color32(228, 171, 255, 255), new Color32(198, 104, 255, 255) }, // Light Purple.
         { new Color32(156, 105, 38, 255), new Color32(85, 36, 5, 255) }, // Brown.
         { new Color32(137, 141, 144, 255), new Color32(64, 68, 71, 255) }, // Grey.
         { new Color32(212, 215, 217, 255), new Color32(168, 173, 177, 255) }, // Light Grey.
