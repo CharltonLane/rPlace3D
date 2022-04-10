@@ -65,16 +65,16 @@ public class TileSimulation : MonoBehaviour {
         _currentMapState.SetPixels32(fillColorArray);
         _currentMapState.Apply();
 
-
-        _dataLoader.LoadFile(15);
-
-    
+        
         // Create our textures to store position and colour data.
         _spawnPositionTex = new Texture2D(_tilesPerFrame, 1, TextureFormat.RGBAFloat, false);
         _colorTex = new Texture2D(_tilesPerFrame, 1, TextureFormat.RGBAFloat, false);
 
         // Tell the VFX Graph how many tiles (particles) to create each frame.
         _vfx.SetInt(_tilePerFrameAttrID, _tilesPerFrame);
+
+        // Load the fist file to start the simulation.
+        _dataLoader.LoadFile(15);
     }
 
     void Update() {
@@ -96,17 +96,22 @@ public class TileSimulation : MonoBehaviour {
         // Create tiles.
         if (_isPlaying) {
             CreateTiles();
-            _vfx.Play();
         }
     }
 
-
+    
     private void CreateTiles() {
         // Read a new set of tile data and place this data into the textures to be passed to the VFX Graph.
         for (int i=0; i < _tilesPerFrame; i++) {
 
+            // Uh oh, all out of tiles! Bummer!
+            if (!_dataLoader.IsMoreData()) {
+                Debug.Log("No more data!");
+                break;
+            }
             TileData tileData = _dataLoader.ReadNextTile();
 
+            
             Vector3 pos = new Vector3(tileData.Location.x, _towerHeights[tileData.Location.x, tileData.Location.y], -tileData.Location.y) * _mapScale;
             Color color = RGBToHDR.ToHDR(tileData.Color);
 
@@ -127,6 +132,9 @@ public class TileSimulation : MonoBehaviour {
         // Pass data to the VFX Graph.
         _vfx.SetTexture(_positionAttrID, _spawnPositionTex);
         _vfx.SetTexture(_colorAttrID, _colorTex);
+
+        // Create new particles for the new tiles.
+        _vfx.Play();
     }
 
 }

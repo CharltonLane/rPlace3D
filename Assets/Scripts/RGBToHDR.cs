@@ -1,5 +1,5 @@
 /*
-RGBToHDRMapping.cs 
+RGBToHDR.cs 
 
 Original Author: Charlton Lane
 Created: 

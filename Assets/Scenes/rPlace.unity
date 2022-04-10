@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b639ac14b1600543af476a56bb2eff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _parent: {fileID: 330585546}
+  _followTransform: {fileID: 330585546}
   _camera: {fileID: 24530307}
 --- !u!1 &69610788
 GameObject:
@@ -971,8 +971,8 @@ MonoBehaviour:
   m_text: "\n\n<size=140%>Camera</size>\nWASD: Move \nSHIFT (Hold): Move faster\nRight
     Mouse (Hold) + Drag: Turn\n\n<size=140%>Minimap</size>\nM: Toggle Minimap\nScroll:
     Zoom minimap in/out\n\n<size=140%>Simulation</size>\nSPACE: Pause/Play\nF: Flatten
-    the pixels (Useful if lagging)\n\n<size=140%>Other</size>\nF11: Toggle Fullscreen\nCtrl:
-    Release cursor\nESC (Tap): Close this menu\nESC (Hold): Quit"
+    the pixels (Useful if lagging)\n\n<size=140%>Other</size>\nF11: Toggle Fullscreen\nESC
+    (Tap): Close this menu\nESC (Hold): Quit"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1073,13 +1073,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544468097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &544468100
 MonoBehaviour:
@@ -1238,7 +1238,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016707869
 GameObject:
@@ -1615,7 +1615,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398498890
 GameObject:
@@ -1652,7 +1652,7 @@ Transform:
   - {fileID: 1016707873}
   - {fileID: 589737838}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1507756852
 GameObject:
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 1723852503}
   - component: {fileID: 1723852506}
   m_Layer: 0
-  m_Name: TilePlacer
+  m_Name: TileSimulation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1982,7 +1982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1723852506
 MonoBehaviour:
@@ -1996,7 +1996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e59807e2b05b040bcdc21b85d5ded7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapScale: 0.1
   _vfx: {fileID: 1723852504}
   _placeMat: {fileID: 2100000, guid: cc7331008388bbd49af537c6b2f2753d, type: 2}
 --- !u!1 &1787844711
@@ -2096,7 +2095,7 @@ RectTransform:
   - {fileID: 1704874321}
   - {fileID: 205300068}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

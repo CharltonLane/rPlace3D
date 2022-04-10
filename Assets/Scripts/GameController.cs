@@ -2,54 +2,40 @@
 GameController.cs 
 
 Original Author: Charlton Lane
-Created: 
+Created: 10/04/2022
 Unity Version: 2021.2.18f1
 Contributors: 
 
-Description: 
+Description: Script that adds many basic functions to the program.
 */
 
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+    // Timer variables used to see if the app should be closed.
     private float _quitGameTimer = 0;
     private float _maxQuitGameTimer = 1.25f;
-
-    [ColorUsageAttribute(true, true)]
-    public Color color;
-
-    void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
 
 
     private void Update() {
         ESCToQuit();
-        ToggleCursorLock();
         ToggleFullScreen();
     }
 
+
     private void ToggleFullScreen() {
+        // F11 to toggle fullscreen.
         if (Input.GetKeyDown(KeyCode.F11)) {
             Screen.fullScreen = !Screen.fullScreen;
         }
     }
 
-    private void ToggleCursorLock() {
-        if (Input.GetKeyDown(KeyCode.LeftControl)) {
-            if (Cursor.lockState == CursorLockMode.Locked) {
-                Cursor.lockState = CursorLockMode.None;
-            } else {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
-    }
 
     private void ESCToQuit() {
+        // Listens for ESC being held for some time, then closes the program.
+
         if (Input.GetKey(KeyCode.Escape)) {
             _quitGameTimer += Time.deltaTime;
             print(_quitGameTimer);
@@ -60,7 +46,6 @@ public class GameController : MonoBehaviour {
         }
 
         if (_quitGameTimer >= _maxQuitGameTimer) {
-            print("Quitting: " + _quitGameTimer + " " + _maxQuitGameTimer);
             Application.Quit();
         }
 
