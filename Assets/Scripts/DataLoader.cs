@@ -65,7 +65,7 @@ public class DataLoader {
 
         // Reached the end of the file, read the next one.
         // TODO This will error out on the last file.
-        if (_nextLineToRead % 1000 == 0) {
+        if (_nextLineToRead % 100000 == 0) {
             Debug.Log("Placed " + (_nextLineToRead + (_currentFileIndex  * 10000000))+ " tiles.");
         }
 
