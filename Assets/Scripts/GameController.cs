@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour {
     private float _quitGameTimer = 0;
     private float _maxQuitGameTimer = 1.25f;
 
+    [ColorUsageAttribute(true, true)]
+    public Color color;
+
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
