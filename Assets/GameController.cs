@@ -17,7 +17,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     private float _quitGameTimer = 0;
-    private float _maxQuitGameTimer = 1.75f;
+    private float _maxQuitGameTimer = 1.25f;
 
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
