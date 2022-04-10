@@ -19,6 +19,7 @@ using UnityEngine;
 
 public class DataLoader {
 
+    private int _finalFileIndex = 32;
     private int _currentFileIndex = 0;
     private int _nextLineToRead = 0;
     private string[] _data;
@@ -61,8 +62,9 @@ public class DataLoader {
     };
 
 
-    public void LoadFile(int fileIndex) {
-        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\rPlaceData\\placeData" + fileIndex.ToString() + ".txt");
+    public void LoadFile() {
+        //Debug.Log("Reading file with index " + _currentFileIndex);
+        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\rPlaceData\\placeData" + _currentFileIndex.ToString() + ".txt");
     }
 
 
@@ -73,12 +75,13 @@ public class DataLoader {
 
 
     public TileData ReadNextTile() {
+
         // Read the data for the next tile to be placed from file and return a TileData.
 
         // Debug info.
-        if (_nextLineToRead % 100000 == 0) {
-            Debug.Log("Placed " + (_nextLineToRead + (_currentFileIndex * 10000000)) + " tiles.");
-        }
+        //if (_nextLineToRead % 1000000 == 0) {
+        //    Debug.Log("Placed " + (_nextLineToRead + (_currentFileIndex * 10000000)) + " tiles.");
+        //}
 
 
         // Reached the end of the file, need to load the next file and get data from there.
@@ -86,7 +89,7 @@ public class DataLoader {
             _nextLineToRead = 0;
             _currentFileIndex++;
 
-            LoadFile(_currentFileIndex);
+            LoadFile();
         }
 
 
@@ -109,8 +112,8 @@ public class DataLoader {
 
         // If the next call will be the end of the file, and need data from the next file.
         if (_nextLineToRead >= _data.Length) {
-            // If we're on the last file (There are only 16 files).
-            if (_currentFileIndex >= 16) {
+            // If we're on the last file (There are only 32 files).
+            if (_currentFileIndex >= _finalFileIndex) {
                 // This flag makes it so this will not be called again.
                 _isMoreData = false;
             }

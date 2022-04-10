@@ -74,7 +74,7 @@ public class TileSimulation : MonoBehaviour {
         _vfx.SetInt(_tilePerFrameAttrID, _tilesPerFrame);
 
         // Load the fist file to start the simulation.
-        _dataLoader.LoadFile(15);
+        _dataLoader.LoadFile();
     }
 
     void Update() {
@@ -83,7 +83,11 @@ public class TileSimulation : MonoBehaviour {
         // Flatten the board.
         if (Input.GetKeyDown(KeyCode.F)) {
             _placeMat.mainTexture = _currentMapState;
+
+            _vfx.SetTexture(_positionAttrID, new Texture2D(0, 0));
+            _vfx.SetTexture(_colorAttrID, new Texture2D(0, 0));
             _vfx.Reinit();
+
             _towerHeights = new int[2000, 2000];
             _currentMapState.Apply();
         }
@@ -93,10 +97,15 @@ public class TileSimulation : MonoBehaviour {
             _isPlaying = !_isPlaying;
         }
 
-        // Create tiles.
-        if (_isPlaying) {
-            CreateTiles();
+        // Uh oh, all out of tiles! Bummer!
+        if (_dataLoader.IsMoreData()) {
+
+            // Create tiles.
+            if (_isPlaying) {
+                CreateTiles();
+            }
         }
+
     }
 
     
@@ -104,11 +113,11 @@ public class TileSimulation : MonoBehaviour {
         // Read a new set of tile data and place this data into the textures to be passed to the VFX Graph.
         for (int i=0; i < _tilesPerFrame; i++) {
 
-            // Uh oh, all out of tiles! Bummer!
             if (!_dataLoader.IsMoreData()) {
-                Debug.Log("No more data!");
+                // This is needed if we end the last file while trying to make all of our _tilesPerFrame.
                 break;
             }
+
             TileData tileData = _dataLoader.ReadNextTile();
 
             
