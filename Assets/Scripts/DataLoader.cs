@@ -62,7 +62,7 @@ public class DataLoader {
 
 
     public void LoadFile(int fileIndex) {
-        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\placeData" + fileIndex.ToString() + ".txt");
+        _data = System.IO.File.ReadAllLines(Application.persistentDataPath + "\\rPlaceData\\placeData" + fileIndex.ToString() + ".txt");
     }
 
 

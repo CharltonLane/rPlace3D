@@ -1,0 +1,2 @@
+These scripts were used to convert the data into a smaller and more manageable form. They are not needed to use the tool, the data has already been formatted correctly and is provided.
+If you do want to use these scripts, I used FormatData.py first, then ran the output file of that into SplitLargeFile.py.
