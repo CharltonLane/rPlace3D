@@ -20,3 +20,6 @@ The controls are listed in the program; hit ESC to see them.
 - Once the program begins to lag, you can press F to flatten the tiles down.
 - At any time if you notice something interesting, you can pause the playback using SPACE, and fly around to inspect.
 - There is also a minimap that can be toggled using M. Do note though, having this enableed will drop your framerate noticebly as it is implemented using a second camera, which requires the scene to be rendered twice!
+
+## Known Issues
+I haven't implemented the bulk placement of blocks that occured whenever reddit moderators placed large rectangles of a single colour to cover an area.
