@@ -22,4 +22,5 @@ The controls are listed in the program; hit ESC to see them.
 - There is also a minimap that can be toggled using M. Do note though, having this enableed will drop your framerate noticebly as it is implemented using a second camera, which requires the scene to be rendered twice!
 
 ## Known Issues
-I haven't implemented the bulk placement of blocks that occured whenever reddit moderators placed large rectangles of a single colour to cover an area.
+- I haven't implemented the bulk placement of blocks that occured whenever reddit moderators placed large rectangles of a single colour to cover an area.
+- There is a noticeable (but brief) freeze/lag whenever a new file worth of data is being loaded.
